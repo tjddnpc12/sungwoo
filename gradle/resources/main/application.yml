@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: planets
+  profiles:
+    active: local
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://3.39.134.94:3306/planet?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: codeclick
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: none
+
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+
+server:
+  port: 8081
+  servlet:
+    session:
+      timeout: 3600
+      tracking-modes: 'cookie'
+    context-path: /planets
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  error:
+    #    path: /error
+    whitelabel:
+      enabled: false
+    include-exception: true
+
+
